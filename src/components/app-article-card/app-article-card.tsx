@@ -33,11 +33,12 @@ export class AppArticleCard {
         <div class="card horizontal">
           <div class="card-stacked">
             <div class="card-content">
-              <p>Date de creation : {this.article.creationDate}</p>
-              <p>Ecrit par : {this.article.autor}</p>
+              {this.article.article}
+              <blockquote> <p> <strong>Date de creation </strong> : {this.article.creationDate.substr(0,10)}</p>
+                <p class="flow-text"> <strong >Ecrit par </strong> : {this.article.autor}</p> </blockquote>
             </div>
             <div class="card-action">
-              <stencil-route-link url='/article/:id'>
+              <stencil-route-link url={'/article/'+this.article._id}>
                 <button class="blue darken-3 waves-effect waves-light btn-small">
                   LIRE
                 </button>

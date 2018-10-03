@@ -20,12 +20,6 @@ export class AppHome {
     return (
       <div class="app-home">
             <app-articles articles={this.articles}></app-articles>
-
-        <stencil-route-link url='/article/5bb1fa4227765205b387e2e7'>
-          <button>
-            article
-          </button>
-        </stencil-route-link>
         </div>
     );
   }

@@ -29,13 +29,12 @@ export class AppArticles {
 
   render() {
     let elts=[];
-    let i=0;
+
     this.articles.map((article)=>{
-      if(i%3 == 0)  elts.push(<div class="row">);
         elts.push(<app-article-card article={article}/>)
-      if(i%3==2) elts.push(</div>);
-      i++;
     });
+
+
     return (
       <div class="app-home">
         <div class="container">

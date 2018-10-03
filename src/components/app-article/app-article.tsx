@@ -26,8 +26,27 @@ export class AppArticle {
     if (this.match && this.match.params.id) {
       return (
         <div class="app-article">
-          BOBO BOBO
-          {this.article.article}
+          <div class="container">
+            <div class="row"/>
+            <br/>
+              <br/>
+            <div class="row">
+              <div class="col-2"/>
+          <div class="jumbotron">
+            <h1 class="display-4"> {this.article.title}</h1>
+            <p class="lead">{this.article.article}</p>
+            <hr class="my-4"/>
+            <blockquote class="blockquote">
+              <p>Ecrit par : <code>{this.article.autor}  </code> | date de creation : <code> {this.article.creationDate}</code></p>
+            </blockquote>
+            <stencil-route-link url='/'>
+              <button class="btn btn-primary btn-lg">
+                retour
+              </button>
+            </stencil-route-link>
+          </div>
+            </div>
+          </div>
         </div>
       );
 
