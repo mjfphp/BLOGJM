@@ -16,6 +16,11 @@ import {
 
 export namespace Components {
 
+  interface AppAdd {
+    'submiter': (e: any) => void;
+  }
+  interface AppAddAttributes extends StencilHTMLAttributes {}
+
   interface AppArticleCard {
     'article': any;
   }
@@ -37,7 +42,9 @@ export namespace Components {
     'articles'?: any;
   }
 
-  interface AppHome {}
+  interface AppHome {
+    'render': () => any;
+  }
   interface AppHomeAttributes extends StencilHTMLAttributes {}
 
   interface AppProfile {
@@ -53,6 +60,7 @@ export namespace Components {
 
 declare global {
   interface StencilElementInterfaces {
+    'AppAdd': Components.AppAdd;
     'AppArticleCard': Components.AppArticleCard;
     'AppArticle': Components.AppArticle;
     'AppArticles': Components.AppArticles;
@@ -62,6 +70,7 @@ declare global {
   }
 
   interface StencilIntrinsicElements {
+    'app-add': Components.AppAddAttributes;
     'app-article-card': Components.AppArticleCardAttributes;
     'app-article': Components.AppArticleAttributes;
     'app-articles': Components.AppArticlesAttributes;
@@ -70,6 +79,12 @@ declare global {
     'app-root': Components.AppRootAttributes;
   }
 
+
+  interface HTMLAppAddElement extends Components.AppAdd, HTMLStencilElement {}
+  var HTMLAppAddElement: {
+    prototype: HTMLAppAddElement;
+    new (): HTMLAppAddElement;
+  };
 
   interface HTMLAppArticleCardElement extends Components.AppArticleCard, HTMLStencilElement {}
   var HTMLAppArticleCardElement: {
@@ -108,6 +123,7 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
+    'app-add': HTMLAppAddElement
     'app-article-card': HTMLAppArticleCardElement
     'app-article': HTMLAppArticleElement
     'app-articles': HTMLAppArticlesElement
@@ -117,6 +133,7 @@ declare global {
   }
 
   interface ElementTagNameMap {
+    'app-add': HTMLAppAddElement;
     'app-article-card': HTMLAppArticleCardElement;
     'app-article': HTMLAppArticleElement;
     'app-articles': HTMLAppArticlesElement;

@@ -11,7 +11,7 @@ export class AppArticle {
   @State() article:any;
 
   componentWillLoad() {
-  let id=this.match.params.id
+  let id=this.match.params.id;
     return fetch('https://polymer-101-workshop.cleverapps.io/api/blogpost/'+id)
       .then(response => response.json())
       .then(data => {

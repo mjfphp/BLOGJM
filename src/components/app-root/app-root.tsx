@@ -1,10 +1,12 @@
-import { Component } from '@stencil/core';
+import {Component} from '@stencil/core';
 
 @Component({
   tag: 'app-root',
   styleUrl: 'app-root.css',
   shadow: true
 })
+
+
 export class AppRoot {
 
   render() {
@@ -30,6 +32,7 @@ export class AppRoot {
               <stencil-route url='/' component='app-home' exact={true} />
               <stencil-route url='/profile/:name' component='app-profile'/>
               <stencil-route url='/article/:id' component='app-article'/>
+              <stencil-route url='/add' component='app-add'/>
             </stencil-route-switch>
           </stencil-router>
         </main>
