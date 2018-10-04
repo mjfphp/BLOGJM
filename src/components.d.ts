@@ -11,15 +11,19 @@ import '@stencil/router';
 import '@stencil/state-tunnel';
 import {
   MatchResults,
+  RouterHistory,
 } from '@stencil/router';
 
 
 export namespace Components {
 
   interface AppAdd {
-    'submiter': (e: any) => void;
+    'handleChangeArticle': (event: any) => void;
+    'history': RouterHistory;
   }
-  interface AppAddAttributes extends StencilHTMLAttributes {}
+  interface AppAddAttributes extends StencilHTMLAttributes {
+    'history'?: RouterHistory;
+  }
 
   interface AppArticleCard {
     'article': any;
