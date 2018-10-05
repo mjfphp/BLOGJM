@@ -43,7 +43,14 @@ export class AppArticleCard {
                   LIRE +
                 </button>
               </stencil-route-link>
+
+              <stencil-route-link url={'/add/'+this.article._id}>
+                <button class="cyan waves-effect waves-light btn-small">
+                  modifier
+                </button>
+              </stencil-route-link>
             </div>
+
           </div>
         </div>
       </div>

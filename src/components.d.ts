@@ -18,11 +18,13 @@ import {
 export namespace Components {
 
   interface AppAdd {
-    'handleChangeArticle': (event: any) => void;
+    'getArt': (id: any) => Promise<void>;
     'history': RouterHistory;
+    'match': MatchResults;
   }
   interface AppAddAttributes extends StencilHTMLAttributes {
     'history'?: RouterHistory;
+    'match'?: MatchResults;
   }
 
   interface AppArticleCard {

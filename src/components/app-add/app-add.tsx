@@ -1,5 +1,5 @@
 import {Component, Method, Prop, State} from '@stencil/core';
-import { RouterHistory } from '@stencil/router';
+import { RouterHistory ,MatchResults} from '@stencil/router';
 
 @Component({
   tag: 'app-add',
@@ -14,9 +14,32 @@ export class AppAdd {
    @State() author:string;
    @State() titre:string;
    @State() cmpt:number;
-  @Prop() history: RouterHistory;
+   @State() art:any;
+   @State() id:string;
+   @Prop() history: RouterHistory;
+   @Prop() match: MatchResults;
    @Method()
+   getArt(id){
+     let url='https://polymer-101-workshop.cleverapps.io/api/blogpost/'+id;
+     return fetch(url)
+       .then(response => response.json())
+       .then(data => {
+         this.art = data;
+       });
+   }
+   componentWillLoad() {
 
+        let id=this.match.params.id;
+        console.log(this.match.params.id);
+
+        this.getArt(id);
+        this.author=this.art.author;
+        this.article=this.art.article;
+        this.titre=this.art.title;
+        this.id=this.art.id;
+        console.log(this.art)
+
+   }
    handleChangeArticle(event) {
     this.article=event.target.value;
     console.log(event.target.value)
@@ -31,28 +54,29 @@ export class AppAdd {
      this.history.replace("/");
    }
 
+   submitter(){
+     let postData = {
+       article: this.article,
+       title: this.titre,
+       autor: this.author
+       // creationDate:new Date(),
+     };
+
+     let url="https://polymer-101-workshop.cleverapps.io/api/blogpost";
+     return fetch(url, {
+       method: "POST", // *GET, POST, PUT, DELETE, etc.
+       headers: {'Content-Type': 'application/json'},
+       body: JSON.stringify(postData), // body data type must match "Content-Type" header
+     })
+       .then(response =>
+           response.json()
+       ); // parses response to JSON
+
+   }
   submiter(e){
      e.preventDefault();
-
-       let postData = {
-         article: this.article,
-         title: this.titre,
-         autor: this.author
-         // creationDate:new Date(),
-       };
-       let url="https://polymer-101-workshop.cleverapps.io/api/blogpost";
-       return fetch(url, {
-         method: "POST", // *GET, POST, PUT, DELETE, etc.
-         headers: {'Content-Type': 'application/json'},
-         body: JSON.stringify(postData), // body data type must match "Content-Type" header
-       })
-         .then(response =>
-           response.json(),
-            this.vider()
-         ); // parses response to JSON
-
-
-
+     this.submitter();
+     this.vider();
      }
 
 
@@ -91,20 +115,20 @@ export class AppAdd {
                        <div class="col-sm-2"/>
                        <label  class="col-sm-2 col-form-label">Titre :</label>
                        <div class="col-sm-4">
-                         <input type="text"  id="titre" class="form-control"  onInput={(event) => this.handleChangeTitle(event)} placeholder="Titre"/>
+                         <input type="text" value={this.titre} id="titre" class="form-control"  onInput={(event) => this.handleChangeTitle(event)} placeholder="Titre"/>
                        </div>
                      </div>
                      <div class="form-group row">
                        <div class="col-sm-2"/>
                        <label  class="col-sm-2 col-form-label">Auteur : </label>
                        <div class="col-sm-3">
-                         <input type="text"  id="auteur" class="form-control"  onInput={(event) => this.handleChangeAuthor(event)} placeholder="Auteur"/>
+                         <input type="text" value={this.author} id="auteur" class="form-control"  onInput={(event) => this.handleChangeAuthor(event)} placeholder="Auteur"/>
                        </div>
                      </div>
                      <div class="form-group row">
                        <div class="col-sm-2"/>
                        <label  class="col-sm-2 col-form-label" >Article :</label>
-                       <textarea  id="article"  class="form-control col-sm-6" onInput={(event) => this.handleChangeArticle(event)}>
+                       <textarea  id="article"  value={this.article} class="form-control col-sm-6" onInput={(event) => this.handleChangeArticle(event)}>
                        </textarea>
                        </div>
                      <div class="row">

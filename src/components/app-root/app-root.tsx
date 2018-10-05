@@ -33,6 +33,7 @@ export class AppRoot {
               <stencil-route url='/profile/:name' component='app-profile'/>
               <stencil-route url='/article/:id' component='app-article'/>
               <stencil-route url='/add' component='app-add'/>
+              <stencil-route url='/add/:id' component='app-add' exact={true}/>
             </stencil-route-switch>
           </stencil-router>
         </main>
