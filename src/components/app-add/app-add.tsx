@@ -15,7 +15,9 @@ export class AppAdd {
    @State() titre:string;
    @State() cmpt:number;
    @State() art:any;
+   @State() method:any;
    @State() id:string;
+   @State() tete:string;
    @Prop() history: RouterHistory;
    @Prop() match: MatchResults;
    @Method()
@@ -25,24 +27,22 @@ export class AppAdd {
        .then(response => response.json())
        .then(data => {
          this.art = data;
+         this.author=data.autor;
+         this.article=data.article;
+         this.titre=data.title;
+         this.id=data._id;
+         this.tete="MODIFIER UN ARTICLE";
+         this.method="PUT";
        });
    }
    componentWillLoad() {
-
+        this.tete="AJOUTER UN ARTICLE";
         let id=this.match.params.id;
-        console.log(this.match.params.id);
-
         this.getArt(id);
-        this.author=this.art.author;
-        this.article=this.art.article;
-        this.titre=this.art.title;
-        this.id=this.art.id;
-        console.log(this.art)
-
+        this.method="POST"
    }
    handleChangeArticle(event) {
     this.article=event.target.value;
-    console.log(event.target.value)
    }
    handleChangeTitle(event) {
      this.titre = event.target.value;
@@ -53,7 +53,25 @@ export class AppAdd {
    vider(){
      this.history.replace("/");
    }
+    modifier(){
+      let postData = {
+        article: this.article,
+        title: this.titre,
+        autor: this.author,
+        _id:this.id
+        // creationDate:new Date(),
+      };
 
+      let url="https://polymer-101-workshop.cleverapps.io/api/blogpost";
+      return fetch(url, {
+        method: "PUT", // *GET, POST, PUT, DELETE, etc.
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(postData), // body data type must match "Content-Type" header
+      })
+        .then(response =>
+          response.json()
+        ); // parses response to JSON
+    }
    submitter(){
      let postData = {
        article: this.article,
@@ -75,7 +93,12 @@ export class AppAdd {
    }
   submiter(e){
      e.preventDefault();
-     this.submitter();
+     if(this.method=="PUT"){
+       this.modifier()
+     }else{
+       this.submitter();
+     }
+
      this.vider();
      }
 
@@ -106,7 +129,7 @@ export class AppAdd {
               <div class="row">
                    <div class="col-3"></div>
                    <div class="col-6">
-                     <h1 class="text-muted">AJOUTER UN ARTICLE</h1>
+                     <h1 class="text-muted">{this.tete}</h1>
                      <br/>
                    </div>
                </div>
