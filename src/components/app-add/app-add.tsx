@@ -119,13 +119,7 @@ export class AppAdd {
        <div class="app-add">
        <br/><br/>
           <div class="container">
-            <div class="row">
-            <stencil-route-link url='/'>
-              <button class="btn btn-warning btn-lg col-sm">
-                RETOUR
-              </button>
-            </stencil-route-link>
-            </div>
+
               <div class="row">
                    <div class="col-3"></div>
                    <div class="col-6">
@@ -157,15 +151,20 @@ export class AppAdd {
                      <div class="row">
                          <div class="col-sm-4"></div>
                        <button type="submit" class="btn btn-lg btn-primary" value="Submit">Submit</button>
-                       &nbsp;
+                       &nbsp; &nbsp; &nbsp;
+                       <stencil-route-link url='/'>
+                         <button class="btn btn-warning btn-lg">
+                           RETOUR
+                         </button>
+                       </stencil-route-link>
                      </div>
                    </form>
-               </div>
-         <br/>
+
          <div class="row">
            <div class="col-sm-4" />
            {el}
          </div>
+       </div>
        </div>
 
       );

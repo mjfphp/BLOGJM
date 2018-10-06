@@ -48,6 +48,16 @@ export namespace Components {
     'articles'?: any;
   }
 
+  interface AppConfirm {
+    'componentWillLoad': () => void;
+    'history': RouterHistory;
+    'match': MatchResults;
+  }
+  interface AppConfirmAttributes extends StencilHTMLAttributes {
+    'history'?: RouterHistory;
+    'match'?: MatchResults;
+  }
+
   interface AppHome {
     'render': () => any;
   }
@@ -70,6 +80,7 @@ declare global {
     'AppArticleCard': Components.AppArticleCard;
     'AppArticle': Components.AppArticle;
     'AppArticles': Components.AppArticles;
+    'AppConfirm': Components.AppConfirm;
     'AppHome': Components.AppHome;
     'AppProfile': Components.AppProfile;
     'AppRoot': Components.AppRoot;
@@ -80,6 +91,7 @@ declare global {
     'app-article-card': Components.AppArticleCardAttributes;
     'app-article': Components.AppArticleAttributes;
     'app-articles': Components.AppArticlesAttributes;
+    'app-confirm': Components.AppConfirmAttributes;
     'app-home': Components.AppHomeAttributes;
     'app-profile': Components.AppProfileAttributes;
     'app-root': Components.AppRootAttributes;
@@ -110,6 +122,12 @@ declare global {
     new (): HTMLAppArticlesElement;
   };
 
+  interface HTMLAppConfirmElement extends Components.AppConfirm, HTMLStencilElement {}
+  var HTMLAppConfirmElement: {
+    prototype: HTMLAppConfirmElement;
+    new (): HTMLAppConfirmElement;
+  };
+
   interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {}
   var HTMLAppHomeElement: {
     prototype: HTMLAppHomeElement;
@@ -133,6 +151,7 @@ declare global {
     'app-article-card': HTMLAppArticleCardElement
     'app-article': HTMLAppArticleElement
     'app-articles': HTMLAppArticlesElement
+    'app-confirm': HTMLAppConfirmElement
     'app-home': HTMLAppHomeElement
     'app-profile': HTMLAppProfileElement
     'app-root': HTMLAppRootElement
@@ -143,6 +162,7 @@ declare global {
     'app-article-card': HTMLAppArticleCardElement;
     'app-article': HTMLAppArticleElement;
     'app-articles': HTMLAppArticlesElement;
+    'app-confirm': HTMLAppConfirmElement;
     'app-home': HTMLAppHomeElement;
     'app-profile': HTMLAppProfileElement;
     'app-root': HTMLAppRootElement;

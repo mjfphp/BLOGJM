@@ -10,6 +10,7 @@
     "test.watch": "stencil test --spec --e2e --watchAll"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.3.1",
     "@stencil/core": "~0.13.2",
     "@stencil/router": "~0.3.0",
     "@stencil/sass": "^0.1.1",

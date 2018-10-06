@@ -40,7 +40,7 @@ export class AppArticleCard {
             <div class="card-action">
               <stencil-route-link url={'/article/'+this.article._id}>
                 <button class="blue darken-3 waves-effect waves-light btn-small">
-                  LIRE +
+                  LIRE
                 </button>
               </stencil-route-link>
 
@@ -49,6 +49,16 @@ export class AppArticleCard {
                   modifier
                 </button>
               </stencil-route-link>
+
+              <stencil-route-link url={'/delete/'+this.article._id}>
+                <button class="red accent-4 waves-effect waves-light btn-small">
+                  supprimer
+                </button>
+              </stencil-route-link>
+
+
+
+
             </div>
 
           </div>
