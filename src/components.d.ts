@@ -29,6 +29,7 @@ export namespace Components {
 
   interface AppArticleCard {
     'article': any;
+    'lire': (texte: any) => any;
   }
   interface AppArticleCardAttributes extends StencilHTMLAttributes {
     'article'?: any;
