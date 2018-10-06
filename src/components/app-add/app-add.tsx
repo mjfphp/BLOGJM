@@ -38,8 +38,10 @@ export class AppAdd {
    componentWillLoad() {
         this.tete="AJOUTER UN ARTICLE";
         let id=this.match.params.id;
-        this.getArt(id);
-        this.method="POST"
+        if(id){
+          this.getArt(id);
+          this.method="POST"
+        }
    }
    handleChangeArticle(event) {
     this.article=event.target.value;

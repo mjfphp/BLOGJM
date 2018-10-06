@@ -29,7 +29,7 @@ export namespace Components {
 
   interface AppArticleCard {
     'article': any;
-    'lire': (texte: any) => any;
+    'lire': () => any;
   }
   interface AppArticleCardAttributes extends StencilHTMLAttributes {
     'article'?: any;
@@ -64,13 +64,6 @@ export namespace Components {
   }
   interface AppHomeAttributes extends StencilHTMLAttributes {}
 
-  interface AppProfile {
-    'match': MatchResults;
-  }
-  interface AppProfileAttributes extends StencilHTMLAttributes {
-    'match'?: MatchResults;
-  }
-
   interface AppRoot {}
   interface AppRootAttributes extends StencilHTMLAttributes {}
 }
@@ -83,7 +76,6 @@ declare global {
     'AppArticles': Components.AppArticles;
     'AppConfirm': Components.AppConfirm;
     'AppHome': Components.AppHome;
-    'AppProfile': Components.AppProfile;
     'AppRoot': Components.AppRoot;
   }
 
@@ -94,7 +86,6 @@ declare global {
     'app-articles': Components.AppArticlesAttributes;
     'app-confirm': Components.AppConfirmAttributes;
     'app-home': Components.AppHomeAttributes;
-    'app-profile': Components.AppProfileAttributes;
     'app-root': Components.AppRootAttributes;
   }
 
@@ -135,12 +126,6 @@ declare global {
     new (): HTMLAppHomeElement;
   };
 
-  interface HTMLAppProfileElement extends Components.AppProfile, HTMLStencilElement {}
-  var HTMLAppProfileElement: {
-    prototype: HTMLAppProfileElement;
-    new (): HTMLAppProfileElement;
-  };
-
   interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {}
   var HTMLAppRootElement: {
     prototype: HTMLAppRootElement;
@@ -154,7 +139,6 @@ declare global {
     'app-articles': HTMLAppArticlesElement
     'app-confirm': HTMLAppConfirmElement
     'app-home': HTMLAppHomeElement
-    'app-profile': HTMLAppProfileElement
     'app-root': HTMLAppRootElement
   }
 
@@ -165,7 +149,6 @@ declare global {
     'app-articles': HTMLAppArticlesElement;
     'app-confirm': HTMLAppConfirmElement;
     'app-home': HTMLAppHomeElement;
-    'app-profile': HTMLAppProfileElement;
     'app-root': HTMLAppRootElement;
   }
 

@@ -23,11 +23,9 @@ export class AppArticleCard {
   // @Prop() articles:Array<article>;
   @Prop() article:any;
   @Method()
-  lire(texte){
+  lire(){
     if(this.article.article!=null){
-      if (texte.length > 114) {
-        return texte.substr(0,114)
-      }
+        return this.article.article.substr(0,114)
     }
     return "";
   }
@@ -40,7 +38,7 @@ export class AppArticleCard {
         <div class="card horizontal">
           <div class="card-stacked">
             <div class="card-content">
-              {this.lire(this.article.article)}
+              {this.lire()}
               <blockquote> <p> <strong>Date de creation </strong> : {this.article.creationDate.substr(0,10)}</p>
                 <p class="flow-text"> <strong >Ecrit par </strong> : {this.article.autor}</p> </blockquote>
             </div>
